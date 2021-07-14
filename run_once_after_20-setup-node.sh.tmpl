@@ -1,12 +1,13 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
-
-which -s asdf
-if [[ $? != 0 ]]; then
-  echo 'Installing node environment...'
-    asdf plugin add nodejs 
-
+# If asdf is installed...
+if  command -v asdf > /dev/null; then
+  echo 'Installing asdf node plugin...'
+	asdf plugin add nodejs 
+	asdf install nodejs latest
+else
+	echo 'Chezmoi Run Script Error: requires asdf be installed'
 fi
 
 # EOF
