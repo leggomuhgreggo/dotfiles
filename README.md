@@ -45,7 +45,6 @@ Global Node Modules
 - newman
 - serve
 - typescript
-- vercel
 
 Aliases
 https://github.com/renemarc/dotfiles/blob/master/dot_bash_aliases
@@ -80,3 +79,16 @@ op get totp [item query]
 
 
 ```
+
+ZShell and Oh-my-zshell
+
+https://ohmyz.sh/#install
+https://github.com/ohmyzsh/ohmyzsh/wiki
+
+# Vim
+
+~/.vimrc
+https://github.com/VundleVim/Vundle.vim
+macvim
+
+https://www.nerdfonts.com/font-downloads
