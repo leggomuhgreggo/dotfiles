@@ -9,35 +9,34 @@
 #
 tap 'homebrew/core'
 tap 'homebrew/cask'
-tap 'homebrew/bundle' # Brewfile support
-tap 'homebrew/services' # manage background services
-tap 'homebrew/cask-fonts' # open source fonts
+tap 'homebrew/bundle'               # Brewfile support
+tap 'homebrew/services'             # manage background services
+tap 'homebrew/cask-fonts'           # open source fonts
 
-tap 'adoptopenjdk/openjdk' # java for android studio
+tap 'adoptopenjdk/openjdk'          # java for android studio
 
-tap 'nektos/tap' # Run GitHub Actions workflows locally
+tap 'nektos/tap'                    # Run GitHub Actions workflows locally
 
 # BREWS / CASKS
 # Apps
 ################################################################################
 #
-brew 'mas' # automatically install mac apps
+brew 'mas'                          # automatically install mac apps
 
 # DEV ENV
-brew 'git' # version control
-brew 'macvim' # vim flavor
-cask 'alacritty' # terminal emulator
-brew 'tmux' # terminal multiplexor
-brew 'zsh-completions' # adds auto complete for zsh
-brew 'starship' # cross shell prompt
-brew 'chezmoi' # dotfile manager
+brew 'git'                          # version control
+brew 'macvim'                       # vim flavor
+cask 'alacritty'                    # terminal emulator
+brew 'tmux'                         # terminal multiplexor
+brew 'zsh-completions'              # adds auto complete for zsh
+brew 'starship'                     # cross shell prompt
+brew 'chezmoi'                      # dotfile manager
 
 # AWS CLI TOOLS
 brew 'awscli'
-cask 'aws-vault' # help with complex AWS auth
-cask 'session-manager-plugin' # aws session manager
-brew 'direnv' # dotenv thing for session manager
-cask '1password-cli' # 1pw companion cli
+cask 'aws-vault'                    # help with complex AWS auth
+cask 'session-manager-plugin'       # aws session manager
+brew 'direnv'                       # dotenv thing for session manager
 
 # GRAVY DEPS
 brew 'rbenv'
@@ -50,14 +49,14 @@ brew 'graphicsmagick'
 brew 'imagemagick'
 
 # STANDARD DEV TOOLS
-brew 'gh' # GitHub CLI
-brew 'jq' # like jquery for cli
-brew 'yq' # yaml functions
+brew 'gh'                           # GitHub CLI
+brew 'jq'                           # like jquery for cli
+brew 'yq'                           # yaml functions
 brew 'watchman'
-brew 'gnupg' # PGP
-brew 'cmake' # build executor
-brew 'circleci' # checks circleci config
-brew 'nektos/tap/act' # Run GitHub Actions workflows locally
+brew 'gnupg'                        # PGP
+brew 'cmake'                        # build executor
+brew 'circleci'                     # checks circleci config
+brew 'nektos/tap/act'               # Run GitHub Actions workflows locally
 cask 'docker'
 
 # TERRAFORM
@@ -66,7 +65,37 @@ brew 'tfenv'
 brew 'tflint'
 
 # MOBILE DEV
-cask 'adoptopenjdk' # Java Dev Kit for Android
+cask 'adoptopenjdk'                 # Java Dev Kit for Android
 cask 'adoptopenjdk8'
 cask 'openjdk'
-mas 'Xcode', id: 497_799_835 # XCode for iOS support
+mas 'Xcode', id: 497_799_835        # XCode for iOS support
+cask "android-platform-tools"       # Android SDK platform-tools
+
+$ cp ~/.config/Code/User/settings.json $(chezmoi source-path)
+
+# APPS
+cask "1password"
+cask "1password-cli"
+cask "adoptopenjdk"
+cask "android-messages"
+cask "android-studio"
+cask "brave-browser"
+cask "discord"
+cask "docker"
+cask "fantastical"
+cask "figma"
+cask "firefox"
+cask "font-fira-code"
+cask "font-hack-nerd-font"
+cask "font-source-code-pro"
+cask "google-chrome"
+cask "hyperdock"
+cask "postico"
+cask "postman"
+cask "private-internet-access"
+cask "spotify"
+cask "visual-studio-code"
+cask "vlc"
+
+mas "Slack", id: 803453959
+mas "Xcode", id: 497799835

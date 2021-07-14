@@ -1,0 +1,72 @@
+# https://starship.rs/config/
+
+# [aws]
+# disabled = true
+
+# [hostname]
+# disabled = true
+
+# [java]
+# disabled = true
+
+# [nodejs]
+# disabled = true
+
+# [package]
+# disabled = true
+
+# [python]
+# disabled = true
+
+# [username]
+# disabled = true
+
+[character]
+style_failure         = "red"
+style_success         = "purple"
+use_symbol_for_status = true
+
+[cmd_duration]
+min_time = 15_000
+style    = "italic yellow"
+
+# [directory]
+# style             = "blue"
+# truncate_to_repo  = true
+# truncation_length = 5
+
+[directory]
+style = "bold blue"
+
+[env_var]
+style    = "italic yellow"
+symbol   = ""
+variable = "AWSUME_PROFILE"
+
+add_newline = false
+
+[git_branch]
+style = "bold bright-white"
+
+# [git_branch]
+# style             = "bright-black"
+# symbol            = ""
+# truncation_symbol = "…"
+
+[git_state]
+style = "italic yellow"
+
+[git_status]
+stashed = ""
+style   = "bright-black"
+
+[git_commit]
+only_detached = true
+prefix        = ""
+style         = "bold black"
+suffix        = " "
+
+[battery]
+charging_symbol    = "⚡️"
+discharging_symbol = "💀"
+full_symbol        = "🔋"

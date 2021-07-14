@@ -7,8 +7,8 @@
 	editor = code --wait
 
 [commit]
-  # Show diff when preparing commit message
-  # verbose = true
+	# Show diff when preparing commit message
+	# verbose = true
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -23,11 +23,11 @@
 	autoupdate = true
 
 [alias]
-  fetch-checkout = !sh -c 'git fetch $1 $2 && git checkout $2' -
+	fetch-checkout = !sh -c 'git fetch $1 $2 && git checkout $2' -
 	pushf = push --force-with-lease
-  append = commit --amend --no-edit
-  unstage = reset HEAD --
-  prunelocal = !sh -c 'npx git-removed-branches --prune'
+	append = commit --amend --no-edit
+	unstage = reset HEAD --
+	prunelocal = !sh -c 'npx git-removed-branches --prune'
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

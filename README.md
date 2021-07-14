@@ -1,4 +1,8 @@
-# Dot Files
+# Dotfiles
+
+```
+sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply leggomuhgreggo
+```
 
 I started by following the instructions in this [blog post](https://www.moncefbelyamani.com/automating-the-setup-of-a-new-mac-with-all-your-apps-preferences-and-development-tools/).
 
@@ -22,9 +26,48 @@ Accepts email
 
 > chezmoi can automatically commit and push changes to your source directory to your repo. This feature is disabled by default. To enable it, add the following to your config file:
 
+<!--
+TODO:
+
+- setup node
+- ssh
+- aliases
+- VSCode
+- macOS
+
+
+Global Node Modules
+- @nrwl/cli
+- bower
+- eas-cli
+- eas-cli-local-build-plugin
+- expo-cli
+- newman
+- serve
+- typescript
+- vercel
+
+Aliases
+https://github.com/renemarc/dotfiles/blob/master/dot_bash_aliases
+
+macos
+https://github.com/twpayne/dotfiles/blob/master/run_once_after_90-configure-darwin.sh.tmpl
+https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+https://github.com/paulmillr/dotfiles/blob/master/etc/macos-settings.sh
+
+
+
+
+# Reference Implementations
 https://github.com/renemarc/dotfiles
 https://github.com/mathiasbynens/dotfiles
 https://github.com/twpayne/dotfiles/
+https://github.com/Amar1729/dotfiles
 
+# Apps to try
 https://github.com/asdf-vm/asdf
 https://github.com/koekeishiya/yabai
+
+
+
+-->

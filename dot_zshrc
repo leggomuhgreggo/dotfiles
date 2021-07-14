@@ -1,0 +1,157 @@
+# Use all the colors
+export TERM="xterm-256color"
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+DEFAULT_USER=`whoami`
+ZSH_THEME="agnoster"
+
+# Plugins
+plugins=(zsh-autosuggestions git colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting tmux zsh-nvm zsh-better-npm-completion)
+
+source $ZSH/oh-my-zsh.sh
+
+# Android Stuff
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Autoload rbev
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+
+# VS Code
+export PATH="$PATH:~/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+export CHROMEDRIVER_FILEPATH="$HOME/chromedriver_mac64.zip"
+
+# NVM Stuff
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+# auto jump
+[ -f /etc/profile.d/autojump.sh ] && . /etc/profile.d/autojump.sh
+
+# stuff for fastlane
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# RC Aliases
+alias zrc="vim ~/.zshrc"
+alias vrc="vim ~/.vimrc"
+
+# CD Aliases
+alias projects="~/projects"
+alias sweetgreen="~/projects/sweetgreen"
+alias personal="~/projects/personal"
+alias gaza="~/projects/gaza"
+alias figma-"~/projects/figma"
+
+# Docker Aliases
+alias dcd='docker-compose down'
+alias dcu='docker-compose up -d'
+alias dps='docker ps'
+
+# Git Aliases
+alias gac='git add . && git commit -m $1'
+alias gs='git status'
+alias gitgraph='git log --graph --decorate --oneline'
+alias gc='git commit -m'
+alias gupc='git push origin HEAD'
+alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(authordate:short) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))'"
+alias gbr="git for-each-ref --sort=-committerdate refs/heads/ refs/remotes --format='%(authordate:short) %(authorname) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
+# sweetgreen Aliases
+alias kill3000='kill -9 $(lsof -i :3000 -t)'
+alias delwatch='~/projects/sweetgreen/frontend'
+alias startwatch='~/projects/sweetgreen/frontend'
+
+# NPM/React Aliases
+alias mkcomp='f() { mkdir $1; cd $1; touch $1.js $1.test.js; cd .. };f'
+alias npmlsg='npm ls -g --depth 0 && yarn global list --depth 0'
+
+# Misc Aliases
+alias sl="~/.sl/sl"
+alias weather='curl wttr.in/90066'
+alias hidden='ls -a | grep "^\."'
+alias lsa='exa -abghl --git --color=automatic'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+alias setlocalgravy="bundle config --local disable_local_branch_check true && bundle config local.gravy ../gravy && bundle update --source gravy && bundle exec rake gravy:install:migrations && bundle exec rake db:migrate"
+alias unsetlocalgravy="bundle config --local disable_local_branch_check false && bundle config --delete local.gravy && bundle update --source gravy && bundle exec rake gravy:install:migrations && bundle exec rake db:migrate"
+alias resettest="RAILS_ENV=test bundle exec rake db:drop && RAILS_ENV=test bundle exec rake db:create && RAILS_ENV=test bundle exec rake db:migrate"
+alias nukedb="bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake pg:import_dev_staging && bundle exec rake db:migrate && bundle exec rake admin:users:create['email@domain.com','password',admin]"
+
+alias tf="terraform"
+
+
+# 1Password Config/Aliases
+alias oplogin='eval $(op signin my)'
+alias oporder='op get totp "AWS - sweetgreen-order"'
+alias avexec='aws-vault exec -m $(oporder) fresh-order'
+
+eval "$(op completion zsh)"; compdef _op op
+
+
+# required by gpg
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/gregwestneat/projects/gravy-graphql/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/gregwestneat/projects/gravy-graphql/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/gregwestneat/projects/gravy-graphql/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/gregwestneat/projects/gravy-graphql/node_modules/tabtab/.completions/sls.zsh
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/gregwestneat/projects/gravy-graphql/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/gregwestneat/projects/gravy-graphql/node_modules/tabtab/.completions/slss.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+
+eval "$(starship init zsh)"
+
+
+# >>>> Vagrant command completion (start)
+fpath=(/opt/vagrant/embedded/gems/2.2.10/gems/vagrant-2.2.10/contrib/zsh $fpath)
+compinit
+# <<<<  Vagrant command completion (end)
+#
+
+# Dir Env (For AWS SSO)
+eval "$(direnv hook bash)"

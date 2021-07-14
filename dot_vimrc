@@ -1,0 +1,96 @@
+" Intial Declarations
+set nocompatible             " be iMproved, required
+filetype off                 " required
+
+" Plugins
+" #####################
+" autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd FileType c setlocal foldmethod=syntax
+autocmd BufNewFile,BufRead .babelrc set filetype=json
+autocmd BufNewFile,BufRead .eslintrc set filetype=json
+autocmd BufWritePre *.js :normal gggqG
+
+" Starts Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Plugin List: Dope
+Plugin 'prettier/vim-prettier'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdtree'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'wincent/command-t'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+
+" Plugin List: Considering
+Plugin 'valloric/youcompleteme'
+" Plugin 'tpope/vim-sleuth'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'zenbro/mirror.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-airline/vim-airline'
+" Plugin 'tpope/vim-vinegar'
+Plugin 'eshion/vim-sync'
+" Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'ervandew/supertab'
+Plugin 'junegunn/vim-easy-align'
+" Plugin 'honza/vim-snippets'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
+" Plugin List: Theme
+Plugin 'mhartington/oceanic-next'
+
+" Ends Vundle
+call vundle#end()            " required
+filetype plugin indent on    " required
+filetype plugin on
+
+
+
+" Sets
+" #####################
+
+" adds relative and absolute numbering on the side
+set relativenumber 
+set number
+
+" sets the default tab width as 2, sleuth auto detects still
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+let vim_markdown_preview_github=1
+let g:instant_markdown_slow = 1
+set shell=bash\ -i
+
+" Theme
+syntax enable
+" for vim 7
+" set t_Co=256
+
+" for vim 8
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+colorscheme OceanicNext
+
+" Mappings
+" #####################
+
+" This for vim emmet so it doesn't step on the tab 
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" auto format
+map <F7> mzgg=G`z
+
