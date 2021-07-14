@@ -71,3 +71,12 @@ https://github.com/koekeishiya/yabai
 
 
 -->
+
+https://support.1password.com/command-line-getting-started/#learn-more
+
+```
+op get totp [item query]
+
+
+
+```
