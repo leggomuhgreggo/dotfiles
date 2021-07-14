@@ -1,6 +1,13 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
+# If we on macOS, install homebrew and tweak system a bit.
+which -s brew
+if [[ $? != 0 ]]; then
+  echo 'Installing Homebrew...'
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 brew bundle --no-lock --file=~/Brewfile.local
 
 # EOF
