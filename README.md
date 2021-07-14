@@ -33,18 +33,6 @@ TODO:
 - ssh
 - aliases
 - VSCode
-- macOS
-
-
-Global Node Modules
-- @nrwl/cli
-- bower
-- eas-cli
-- eas-cli-local-build-plugin
-- expo-cli
-- newman
-- serve
-- typescript
 
 Aliases
 https://github.com/renemarc/dotfiles/blob/master/dot_bash_aliases
@@ -92,3 +80,30 @@ https://github.com/VundleVim/Vundle.vim
 macvim
 
 https://www.nerdfonts.com/font-downloads
+
+---
+
+### ssh [TODO]
+
+https://cli.github.com/manual/gh_ssh-key_add
+
+```
+ssh-keygen -t ed25519 -C "greg.westneat@gmail.com""
+gh ssh-key add ~/.ssh/id_ed25519.pub -t "work laptop (21.07)"
+```
+
+## asdf
+
+https://asdf-vm.com/#/core-configuration
+https://github.com/asdf-vm/asdf-nodejs#default-npm-packages
+
+- brew install gpg
+- brew install gawk
+- asdf plugin add nodejs
+
+---
+
+Helpful References
+
+- [Bash Techniques Reference](https://linuxize.com/post/bash-check-if-file-exists/)
+-
