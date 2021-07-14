@@ -1,0 +1,13 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+
+which -s asdf
+if [[ $? != 0 ]]; then
+  echo 'Installing node environment...'
+    asdf plugin add nodejs 
+
+fi
+
+# EOF
+{{ end -}}

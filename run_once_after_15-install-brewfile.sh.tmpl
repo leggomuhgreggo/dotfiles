@@ -1,0 +1,14 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+# Brefile Ref:
+# https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f
+
+FILE=~/Brewfile.local
+if [[ -f "$FILE" ]]; then
+    echo "installing Brewfile dependencies..."
+    brew bundle --no-lock --file=~/Brewfile.local
+fi
+
+# EOF
+{{ end -}}
