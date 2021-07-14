@@ -1,0 +1,72 @@
+# frozen_string_literal: true
+
+# Referenced these instructions:
+# https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f
+
+# TAPS
+# formulae trackers
+################################################################################
+#
+tap 'homebrew/core'
+tap 'homebrew/cask'
+tap 'homebrew/bundle' # Brewfile support
+tap 'homebrew/services' # manage background services
+tap 'homebrew/cask-fonts' # open source fonts
+
+tap 'adoptopenjdk/openjdk' # java for android studio
+
+tap 'nektos/tap' # Run GitHub Actions workflows locally
+
+# BREWS / CASKS
+# Apps
+################################################################################
+#
+brew 'mas' # automatically install mac apps
+
+# DEV ENV
+brew 'git' # version control
+brew 'macvim' # vim flavor
+cask 'alacritty' # terminal emulator
+brew 'tmux' # terminal multiplexor
+brew 'zsh-completions' # adds auto complete for zsh
+brew 'starship' # cross shell prompt
+brew 'chezmoi' # dotfile manager
+
+# AWS CLI TOOLS
+brew 'awscli'
+cask 'aws-vault' # help with complex AWS auth
+cask 'session-manager-plugin' # aws session manager
+brew 'direnv' # dotenv thing for session manager
+cask '1password-cli' # 1pw companion cli
+
+# GRAVY DEPS
+brew 'rbenv'
+brew 'ruby'
+brew 'memcached', restart_service: true
+brew 'postgresql', restart_service: true
+brew 'postgresql@11', restart_service: true
+brew 'redis', restart_service: true
+brew 'graphicsmagick'
+brew 'imagemagick'
+
+# STANDARD DEV TOOLS
+brew 'gh' # GitHub CLI
+brew 'jq' # like jquery for cli
+brew 'yq' # yaml functions
+brew 'watchman'
+brew 'gnupg' # PGP
+brew 'cmake' # build executor
+brew 'circleci' # checks circleci config
+brew 'nektos/tap/act' # Run GitHub Actions workflows locally
+cask 'docker'
+
+# TERRAFORM
+brew 'terraform'
+brew 'tfenv'
+brew 'tflint'
+
+# MOBILE DEV
+cask 'adoptopenjdk' # Java Dev Kit for Android
+cask 'adoptopenjdk8'
+cask 'openjdk'
+mas 'Xcode', id: 497_799_835 # XCode for iOS support

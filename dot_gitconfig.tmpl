@@ -1,0 +1,49 @@
+[user]
+	name = Greg Westneat
+	email = "{{ .email }}"
+
+[core]
+	excludesfile = /Users/gregwestneat/.gitignore_global
+	editor = code --wait
+
+[commit]
+  # Show diff when preparing commit message
+  # verbose = true
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[alias]
+  fetch-checkout = !sh -c 'git fetch $1 $2 && git checkout $2' -
+	pushf = push --force-with-lease
+  append = commit --amend --no-edit
+  unstage = reset HEAD --
+  prunelocal = !sh -c 'npx git-removed-branches --prune'
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[rebase]
+	autosquash = true
+	autoStash = true
+
+[fetch]
+	prune = true
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
