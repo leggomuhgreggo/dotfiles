@@ -26,39 +26,6 @@ Accepts email
 
 > chezmoi can automatically commit and push changes to your source directory to your repo. This feature is disabled by default. To enable it, add the following to your config file:
 
-<!--
-TODO:
-
-- setup node
-- ssh
-- aliases
-- VSCode
-
-Aliases
-https://github.com/renemarc/dotfiles/blob/master/dot_bash_aliases
-
-macos
-https://github.com/twpayne/dotfiles/blob/master/run_once_after_90-configure-darwin.sh.tmpl
-https://github.com/mathiasbynens/dotfiles/blob/main/.macos
-https://github.com/paulmillr/dotfiles/blob/master/etc/macos-settings.sh
-
-
-
-
-# Reference Implementations
-https://github.com/renemarc/dotfiles
-https://github.com/mathiasbynens/dotfiles
-https://github.com/twpayne/dotfiles/
-https://github.com/Amar1729/dotfiles
-
-# Apps to try
-https://github.com/asdf-vm/asdf
-https://github.com/koekeishiya/yabai
-
-
-
--->
-
 https://support.1password.com/command-line-getting-started/#learn-more
 
 ```
@@ -85,6 +52,8 @@ https://www.nerdfonts.com/font-downloads
 
 ### ssh [TODO]
 
+https://blog.arkey.fr/2020/04/01/manage_dotfiles_with_chezmoi/
+
 https://cli.github.com/manual/gh_ssh-key_add
 
 ```
@@ -98,3 +67,66 @@ Helpful References
 
 - [Bash Techniques Reference](https://linuxize.com/post/bash-check-if-file-exists/)
 -
+
+bootstrap
+
+Installs standard tools and applications w/ Homebrew
+Updates macos system config
+configures development environment
+
+- Ruby and Node
+- VSCode
+- Browser
+- AWS CLI
+
+setup project environment
+
+<!--
+## FEATURE CONSIDERATIONS
+
+### Export macOS system config??
+https://apple.stackexchange.com/a/305540
+> I wrote some scripts to backup and restore Mac preferences. It does both System and Application preferences.
+> You can grab them here: https://github.com/clintmod/mac-preferences-backup
+
+
+
+### Remove pre-packaged apps (might be destructive)
+```
+# sudo rm -rf /Applications/GarageBand.app
+# sudo rm -rf /Applications/iMovie.app
+# sudo rm -rf /Applications/Keynote.app
+# sudo rm -rf /Applications/Numbers.app
+# sudo rm -rf /Applications/Pages.app
+```
+
+### Improve hostname/computername
+```
+#
+# Sharing - Computer name
+#
+sudo scutil --set ComputerName "lapta"
+sudo scutil --set HostName "lapta"
+sudo scutil --set LocalHostName "lapta"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "lapta"
+```
+
+
+
+ -->
+
+## VSCode
+
+after brew install
+
+```
+# # It turns out that this is packaged with VSCode so no need to install
+# code --install-extension <ext>
+
+# We can enable sync like this...
+code --sync on
+
+# ...But I can't find an obvious way to establish the GH authentication.
+# Needs further investigation. Manual process for now.
+# Maybe we can open a "new file" in VSCode with instructions
+```
