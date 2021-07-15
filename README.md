@@ -92,15 +92,6 @@ ssh-keygen -t ed25519 -C "greg.westneat@gmail.com""
 gh ssh-key add ~/.ssh/id_ed25519.pub -t "work laptop (21.07)"
 ```
 
-## asdf
-
-https://asdf-vm.com/#/core-configuration
-https://github.com/asdf-vm/asdf-nodejs#default-npm-packages
-
-- brew install gpg
-- brew install gawk
-- asdf plugin add nodejs
-
 ---
 
 Helpful References
