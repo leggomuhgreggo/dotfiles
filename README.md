@@ -20,6 +20,10 @@ Accepts email
 
 [Brew Bundle Brewfile Tips](https://gist.github.com/ChristopherA/a579274536aab36ea9966f301ff14f3f)
 
+### yabai & skhd
+
+https://www.notion.so/Yabai-8da3b829872d432fac43181b7ff628fc
+
 ## Future Considerations
 
 ### Automatically commit and push changes to your repo [#](https://www.chezmoi.io/docs/how-to/#automatically-commit-and-push-changes-to-your-repo)
@@ -30,9 +34,6 @@ https://support.1password.com/command-line-getting-started/#learn-more
 
 ```
 op get totp [item query]
-
-
-
 ```
 
 ZShell and Oh-my-zshell

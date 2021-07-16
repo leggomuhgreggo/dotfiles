@@ -23,7 +23,8 @@ tap 'nektos/tap'                    # Run GitHub Actions workflows locally
 #
 brew 'mas'                          # automatically install mac apps
 
-# DEV ENV
+# DEV ENV & TOOLS
+brew 'chezmoi'                      # dotfile managers
 brew 'git'                          # version control
 brew 'macvim'                       # vim flavor
 cask 'alacritty'                    # terminal emulator
@@ -31,8 +32,19 @@ brew 'tmux'                         # terminal multiplexor
 brew 'zsh'                          # shell
 brew 'zsh-completions'              # adds auto complete for zsh
 brew 'starship'                     # cross shell prompt
-brew 'chezmoi'                      # dotfile managers
+brew 'exa'                          # command line sugar (used for `lsa` alias)
+brew 'skhd', restart_service: true  # keyboard shortcuts
+brew 'yabai', restart_service: true # window manager [NOTE: require extra steps]
 brew 'yarn'                         # packager (nvm installed with curl)
+brew 'gh'                           # GitHub CLI
+brew 'jq'                           # like jquery for cli
+brew 'yq'                           # yaml functions
+brew 'watchman'                     # detects file changes 
+brew 'gnupg'                        # PGP
+brew 'cmake'                        # build executor
+brew 'circleci'                     # checks circleci config
+brew 'nektos/tap/act'               # Run GitHub Actions workflows locally
+cask 'docker'                       # containers
 
 # AWS CLI TOOLS
 brew 'awscli'
@@ -49,19 +61,6 @@ brew 'postgresql@11', restart_service: true
 brew 'redis', restart_service: true
 brew 'graphicsmagick'
 brew 'imagemagick'
-
-# STANDARD DEV TOOLS
-brew 'gh'                           # GitHub CLI
-brew 'jq'                           # like jquery for cli
-brew 'yq'                           # yaml functions
-brew 'watchman'
-brew 'gnupg'                        # PGP
-brew 'cmake'                        # build executor
-brew 'circleci'                     # checks circleci config
-brew 'nektos/tap/act'               # Run GitHub Actions workflows locally
-brew 'exa'                          # command line sugar (used for `lsa` alias)
-cask 'docker'
-
 
 # TERRAFORM
 brew 'terraform'
