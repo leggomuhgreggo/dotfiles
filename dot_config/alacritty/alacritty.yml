@@ -587,28 +587,28 @@ schemas:
 
   iceberg_light: &iceberg_light
     primary:
-      background: "0xe8e9ec"
-      foreground: "0x33374c"
+      background: "#e8e9ec"
+      foreground: "#33374c"
 
     normal:
-      black: "0xdcdfe7"
-      red: "0xcc517a"
-      green: "0x668e3d"
-      yellow: "0xc57339"
-      blue: "0x2d539e"
-      magenta: "0x7759b4"
-      cyan: "0x3f83a6"
-      white: "0x33374c"
+      black: "#dcdfe7"
+      red: "#cc517a"
+      green: "#668e3d"
+      yellow: "#c57339"
+      blue: "#2d539e"
+      magenta: "#7759b4"
+      cyan: "#3f83a6"
+      white: "#33374c"
 
     bright:
-      black: "0x8389a3"
-      red: "0xcc3768"
-      green: "0x598030"
-      yellow: "0xb6662d"
-      blue: "0x22478e"
-      magenta: "0x6845ad"
-      cyan: "0x327698"
-      white: "0x262a3f"
+      black: "#8389a3"
+      red: "#cc3768"
+      green: "#598030"
+      yellow: "#b6662d"
+      blue: "#22478e"
+      magenta: "#6845ad"
+      cyan: "#327698"
+      white: "#262a3f"
 
   ir_black: &ir_black
     primary:
@@ -1509,6 +1509,36 @@ schemas:
       magenta: "#AD7FA8"
       cyan: "#34E2E2"
       white: "#EEEEEC"
+
+  shades_of_purple: &shades_of_purple # Default colors
+    primary:
+      background: "#1E1E3F"
+      foreground: "#E1EFFF"
+
+    cursor:
+      text: "#1E1E3F"
+      cursor: "#FAD000"
+
+    normal:
+      black: "#000000"
+      red: "#EC3A37"
+      green: "#75e44c"
+      yellow: "#FAD000"
+      blue: "#6943FF"
+      magenta: "#FF2C70"
+      cyan: "#80FCFF"
+      white: "#FFFFFF"
+
+    bright:
+      black: "#5C5C61"
+      red: "#EC3A37"
+      green: "#3AD900"
+      yellow: "#FAD000"
+      blue: "#6943FF"
+      magenta: "#FB94FF"
+      cyan: "#80FCFF"
+      white: "#2D2B55"
+
 ################################################################################
 ################################################################################
 
@@ -1548,13 +1578,14 @@ schemas:
 # colors: *oxide
 # colors: *pencil
 # colors: *pencil_dark
+colors: *shades_of_purple
 # colors: *seabird
 # colors: *seoul256
 # colors: *snazzy
 # colors: *solarized
 # colors: *solarized_dark
 # colors: *sourcerer
-colors: *substrata
+# colors: *substrata # good
 # colors: *taerminal
 # colors: *tango
 # colors: *tangoish
