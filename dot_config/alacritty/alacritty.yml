@@ -34,12 +34,12 @@ window:
 
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: Fira Code
     # family: Droid Sans Mono for Powerline
     style: Regular
 
   bold:
-    family: FiraCode Nerd Font
+    family: Fira Code
     style: Medium
 
   size: 12.0
