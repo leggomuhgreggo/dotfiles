@@ -1,0 +1,21 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set VSCode as editor and add to path
+export EDITOR=code
+export PATH="$PATH:~/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Android Stuff
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK=/Users/gregorywestneat/Library/Android/sdk
+
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Not totally sure about all this
+export CHROMEDRIVER_FILEPATH="$HOME/chromedriver_mac64.zip"
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH" # is this what's been screwin me?
+source "/Users/gregorywestneat/.rover/env"

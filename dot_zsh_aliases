@@ -1,0 +1,64 @@
+
+# Shortcuts
+alias dots="code $(chezmoi source-path)" 
+
+alias projects="~/projects"
+alias sg="~/projects/work"
+alias jam="~/projects/personal"
+alias downloads="cd ~/Downloads"
+alias desktop="cd ~/Desktop"
+alias mono="cd ~/work/sg-monorepo"
+
+# Misc 
+alias mkdir="mkdir -p"
+alias kill3000='kill -9 $(lsof -i :3000 -t)'
+alias tf="terraform"
+
+# Exa
+alias lsa='exa -abghl --git --color=automatic --group-directories-first'
+alias lC='la --sort=changed'
+alias lM='la --sort=modified'
+alias lS='la --sort=size'
+alias lX='la --sort=extension'
+alias tree='exa -l --git --tree'  
+alias lt='exa --tree --level=2'  
+alias ltt='exa --tree --level=3'  
+
+# Git Aliases
+alias gs='git status'
+alias gac='git add . && git commit -m $1'
+alias gc='git commit -m'
+alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(authordate:short) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))'"
+alias gbr="git for-each-ref --sort=-committerdate refs/heads/ refs/remotes --format='%(authordate:short) %(authorname) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
+# 1Password Config/Aliases
+alias oplogin='eval $(op signin my)'
+alias oporder='op get totp "AWS - sweetgreen-order"'
+alias avexec='aws-vault exec -m $(oporder) fresh-order'
+
+# Always enable colored `grep` output
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
