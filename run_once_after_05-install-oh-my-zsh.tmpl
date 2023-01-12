@@ -1,0 +1,12 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+# If we on macOS, install homebrew and tweak system a bit.
+which -s brew
+if [[ $? != 0 ]]; then
+  echo 'Installing Homebrew...'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# EOF
+{{ end -}}
