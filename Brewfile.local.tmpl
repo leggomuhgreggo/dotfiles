@@ -33,21 +33,21 @@ brew 'zsh'                          # shell
 brew 'zsh-completions'              # adds auto complete for zsh
 brew 'starship'                     # cross shell prompt
 brew 'exa'                          # command line sugar (used for `lsa` alias)
-brew 'skhd', restart_service: true  # keyboard shortcuts
-brew 'yabai', restart_service: true # window manager [NOTE: require extra steps]
+# brew 'skhd', restart_service: true  # keyboard shortcuts
+# brew 'yabai', restart_service: true # window manager [NOTE: require extra steps]
 brew 'yarn'                         # packager (nvm installed with curl)
 brew 'gh'                           # GitHub CLI
 brew 'jq'                           # like jquery for cli
-brew "noahgorstein/tap/jqp"
+# brew "noahgorstein/tap/jqp"
 brew 'yq'                           # yaml functions
 brew 'watchman'                     # detects file changes 
 brew 'gnupg'                        # PGP
 brew 'cmake'                        # build executor
 brew 'circleci'                     # checks circleci config
-brew 'nektos/tap/act'               # Run GitHub Actions workflows locally
+# brew 'nektos/tap/act'               # Run GitHub Actions workflows locally
 cask 'docker'                       # containers
 brew 'youtube-dl'
-brew 'pulumi/tap/pulumi'
+# brew 'pulumi/tap/pulumi'
 brew 'ffmpeg'
 brew 'graphviz'
 brew 'poppler'
@@ -56,16 +56,16 @@ brew 'tesseract-lang'
 
 # AWS CLI TOOLS
 brew 'awscli'
-cask 'aws-vault'                    # help with complex AWS auth
-cask 'session-manager-plugin'       # aws session manager
+# cask 'aws-vault'                    # help with complex AWS auth
+# cask 'session-manager-plugin'       # aws session manager
 brew 'direnv'                       # dotenv thing for session manager
 
 # GRAVY DEPS
 brew 'rbenv'
 brew 'ruby'
 brew 'memcached', restart_service: true
-brew 'postgresql', restart_service: true
-brew 'postgresql@11', restart_service: true
+# brew 'postgresql', restart_service: true
+# brew 'postgresql@11', restart_service: true
 brew 'redis', restart_service: true
 brew 'graphicsmagick'
 brew 'imagemagick'
@@ -75,12 +75,36 @@ brew 'terraform'
 brew 'tfenv'
 brew 'tflint'
 
+# BROWSERS 
+cask "firefox"
+cask "brave-browser"
+cask "google-chrome"
+
+# APPS
+cask "1password"
+cask "1password-cli" # needs pw
+cask "discord"
+cask "docker"
+# cask "fantastical"
+cask "figma"
+cask "font-fira-code"
+cask "font-hack-nerd-font"
+# cask "hyperdock"
+cask "postico"
+cask "postman"
+# cask "private-internet-access"
+cask "spotify"
+cask "slack"
+cask "visual-studio-code"
+# cask "virtualbox"
+cask "vlc"
+
 # MOBILE DEV
-cask 'adoptopenjdk'                 # Java Dev Kit for Android
-cask 'adoptopenjdk8'
-mas 'Xcode', id: 497_799_835        # XCode for iOS support
+# cask 'adoptopenjdk8'
+# mas 'Xcode', id: 497_799_835        # XCode for iOS support
+cask "android-studio"
 cask "android-platform-tools"       # Android SDK platform-tools
-brew 'facebook/fb/idb-companion'
+# brew 'facebook/fb/idb-companion'
 brew 'ideviceinstaller'
 brew 'ios-webkit-debug-proxy'
 brew 'libimobiledevice'
@@ -88,29 +112,3 @@ brew 'lyft/formulae/set-simulator-location'
 brew 'wix/brew/applesimutils'
 brew 'carthage'
 brew 'cocoapods'
-
-# APPS
-cask "1password"
-cask "1password-cli"
-cask "adoptopenjdk"
-cask "android-studio"
-cask "brave-browser"
-cask "discord"
-cask "docker"
-cask "fantastical"
-cask "figma"
-cask "firefox"
-cask "font-fira-code"
-cask "font-hack-nerd-font"
-cask "google-chrome"
-cask "hyperdock"
-cask "postico"
-cask "postman"
-cask "private-internet-access"
-cask "spotify"
-cask "slack"
-cask "visual-studio-code"
-cask "virtualbox"
-cask "vlc"
-
-mas "Xcode", id: 497799835
