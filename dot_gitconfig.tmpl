@@ -3,20 +3,16 @@
 	email = "{{ .email }}"
 
 [core]
-	excludesfile = /Users/gregwestneat/.gitignore_global
+	excludesfile = /Users/gregorywestneat/.gitignore_global
 	editor = code --wait
-
-[commit]
-	# Show diff when preparing commit message
-	# verbose = true
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
 
 [rerere]
 	enabled = true
@@ -28,6 +24,18 @@
 	append = commit --amend --no-edit
 	unstage = reset HEAD --
 	prunelocal = !sh -c 'npx git-removed-branches --prune'
+	recent = !git for-each-ref refs/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset)|%(color:bold green)%(committerdate:relative)%(color:reset)|%(contents:lines=1)|%(color:magenta)%(authorname)%(color:reset)' --count 100 --sort=-committerdate | column -ts '|' | less -SXRF
+	fetch-pulls = !git -c remote.origin.fetch="+refs/pull/*/head:refs/remotes/origin/pull/*" fetch
+	freebase = "!f() { \
+    TOPIC="$(git branch | grep '\\*' | cut -d ' ' -f2)"; \
+    NEWBASE="${1:-main}"; \
+    PREVSHA1="$(git rev-parse HEAD)"; \
+    echo "Freebaseing $TOPIC onto $NEWBASE, previous sha1 was $PREVSHA1"; \
+    echo "---"; \
+    git reset --hard "$NEWBASE"; \
+    git merge --squash "$PREVSHA1"; \
+    git commit; \
+  }; f"
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
