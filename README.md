@@ -24,6 +24,8 @@ Accepts email
 
 https://www.notion.so/Yabai-8da3b829872d432fac43181b7ff628fc
 
+<!-- ------------------------------------ -->
+
 ## Future Considerations
 
 ### Automatically commit and push changes to your repo [#](https://www.chezmoi.io/docs/how-to/#automatically-commit-and-push-changes-to-your-repo)
@@ -67,12 +69,15 @@ gh ssh-key add ~/.ssh/id_ed25519.pub -t "work laptop (21.07)"
 Helpful References
 
 - [Bash Techniques Reference](https://linuxize.com/post/bash-check-if-file-exists/)
--
+
+
+
+<!-- ------------------------------------ -->
 
 bootstrap
 
 Installs standard tools and applications w/ Homebrew
-Updates macos system config
+~~Updates macos system config~~ _removed for now_
 configures development environment
 
 - Ruby and Node
@@ -111,8 +116,6 @@ sudo scutil --set HostName "lapta"
 sudo scutil --set LocalHostName "lapta"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "lapta"
 ```
-
-
 
  -->
 
