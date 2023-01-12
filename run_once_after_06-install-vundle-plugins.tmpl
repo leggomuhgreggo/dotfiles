@@ -1,0 +1,14 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+if [[ ! -d ".vim/bundle/Vundle.vim" ]]; then
+  echo 'Installing Vundle...'
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim > /dev/null
+  
+  echo 'Installing Plugins...'
+  vim -E -s -c "source ~/.vimrc" -c PluginInstall -c qa
+else
+  echo 'Vundle already exists'
+fi
+
+{{ end -}}

@@ -1,11 +1,11 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
-# If we on macOS, install homebrew and tweak system a bit.
-which -s brew
-if [[ $? != 0 ]]; then
-  echo 'Installing Homebrew...'
+if [[ ! -d ".oh-my-zsh" ]]; then
+  echo 'Installing ohmyzsh...'
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  echo '.oh-my-zsh already exists'
 fi
 
 # EOF
