@@ -7,14 +7,11 @@ ZSH_THEME="agnoster"
 plugins=(
   zsh-autosuggestions
   git
-  git-extra-commands
   github
   pip
   python
   brew
-  osx
   tmux
-  zsh-better-npm-completion
 )
 source $ZSH/oh-my-zsh.sh
 

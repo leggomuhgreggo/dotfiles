@@ -8,5 +8,12 @@ else
   echo '.oh-my-zsh already exists'
 fi
 
+if [[ ! -d ".oh-my-zsh/custom/plugins/zsh-autosuggestions" ]]; then
+  echo 'Installing zsh-autosuggestions...'
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+else
+  echo 'zsh-autosuggestions already exists'
+fi
+
 # EOF
 {{ end -}}
