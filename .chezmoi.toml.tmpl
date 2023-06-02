@@ -1,3 +1,12 @@
-{{- $email := promptString "email" -}}
+{{- $email := "greg.westneat@gmail.com" -}}
+
+{{- $dev_email := promptString "Dev Email" $email  -}}
+{{- $personal_email := promptString "Personal Email" $email -}}
+{{- $1pw_email := promptString "1Password Email" $dev_email -}}
+
 [data]
     email = "{{ $email }}"
+    
+    [data.onepassword]
+        email = "{{ $email }}"
+

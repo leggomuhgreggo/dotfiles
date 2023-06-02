@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Check if gh is installed
+if ! command -v gh &> /dev/null
+then
+    echo "gh CLI could not be found"
+    exit
+fi
+
+echo "Checking gh auth status..."
+
+# If not authenticated it will have non-zero exit code
+gh auth status
+# Get the exit status of the last command
+status=$?
+
+if [[ $status -eq 0 ]]; then
+    echo "Great, already logged in!"
+    exit
+else
+    echo "Logging in via gh cli..."
+    gh auth login \
+        --git-protocol ssh \
+        --web
+fi
