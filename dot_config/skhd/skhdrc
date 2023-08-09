@@ -146,3 +146,7 @@ alt - t : yabai -m window --toggle float;\
 alt - p : yabai -m window --toggle sticky;\
           yabai -m window --toggle topmost;\
           yabai -m window --toggle pip
+
+# Alert with random poetic quip about silence 
+ctrl + alt + cmd - q : ~/.config/scripts/random_silence_quip.sh \
+          | xargs -I '{}' osascript -e 'display notification "{}" with title "Awkward Silence Quip"'
