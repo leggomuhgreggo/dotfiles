@@ -149,4 +149,5 @@ alt - p : yabai -m window --toggle sticky;\
 
 # Alert with random poetic quip about silence 
 ctrl + alt + cmd - q : ~/.config/scripts/random_silence_quip.sh \
-          | xargs -I '{}' osascript -e 'display notification "{}" with title "Awkward Silence Quip"'
+  | xargs -I '{}' \
+  osascript -e 'display notification "{}" with title "Awkward Silence Quip"'
