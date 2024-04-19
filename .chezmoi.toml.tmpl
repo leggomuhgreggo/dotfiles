@@ -1,9 +1,10 @@
 {{- $is_work_computer := promptBool "Is work computer?" false -}}
+{{- $default_email := "" -}}
 
 {{- if $is_work_computer -}}
-    {{- $default_email := "gregory.westneat@sweetgreen.com" -}}
+    {{- $default_email = "gregory.westneat@sweetgreen.com" -}}
 {{- else -}}
-    {{- $default_email := "greg.westneat@gmail.com" -}}
+    {{- $default_email = "greg.westneat@gmail.com" -}}
 {{- end -}}
 
 {{- $dev_email := promptString "Dev Email" $default_email -}}
@@ -15,4 +16,4 @@
     is_work_computer = {{ $is_work_computer }}
     
     [data.onepassword]
-        email = "{{ $default_email }}"
+        email = "{{ $1pw_email }}"
