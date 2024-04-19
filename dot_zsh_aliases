@@ -14,15 +14,15 @@ alias mkdir="mkdir -p"
 alias kill3000='kill -9 $(lsof -i :3000 -t)'
 alias tf="terraform"
 
-# Exa
-alias lsa='exa -abghl --git --color=automatic --group-directories-first'
+# eza
+alias lsa='eza -abghl --git --color=automatic --group-directories-first'
 alias lC='la --sort=changed'
 alias lM='la --sort=modified'
 alias lS='la --sort=size'
 alias lX='la --sort=extension'
-alias tree='exa -l --git --tree'  
-alias lt='exa --tree --level=2'  
-alias ltt='exa --tree --level=3'  
+alias tree='eza -l --git --tree'  
+alias lt='eza --tree --level=2'  
+alias ltt='eza --tree --level=3'  
 
 # Git Aliases
 alias gs='git status'

@@ -31,6 +31,7 @@ brew 'zsh-autosuggestions'          # adds auto suggestions for zsh
 brew 'fzf'                          # commandline fuzzy finder
 brew 'starship'                     # cross shell prompt
 cask 'alacritty' args: { no-quarantine: true } # terminal emulator, no-quarantine to avoid security policy, see: https://github.com/alacritty/alacritty/issues/4673#issuecomment-771291615
+cask 'eza'                          # fancy aliases, eg lsa (previously exa)
 
 # FONTS
 cask "font-fira-code"
@@ -67,7 +68,6 @@ cask "google-chrome"
 
 
 # MOBILE DEV
-mas  'Xcode', id: 497799835         # XCode for iOS support
 cask "android-studio"
 cask "android-platform-tools"       # Android SDK platform-tools
 brew 'ideviceinstaller'
@@ -76,6 +76,8 @@ brew 'libimobiledevice'
 brew 'lyft/formulae/set-simulator-location'
 brew 'carthage'
 brew 'cocoapods'
+# TODO: requires itunes login, investigate automation (also requires follow up `sudo xcodebuild -license accept`)
+# mas  'Xcode', id: 497799835         # XCode for iOS support
 
 # MISC DEV TOOLS
 cask 'docker'                       # containers
