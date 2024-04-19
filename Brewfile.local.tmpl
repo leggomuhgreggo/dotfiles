@@ -7,11 +7,10 @@
 # formulae trackers
 ################################################################################
 #
-tap 'homebrew/core'
-tap 'homebrew/cask'
 tap 'homebrew/bundle'               # Brewfile support
 tap 'homebrew/services'             # manage background services
 tap 'homebrew/cask-fonts'           # open source fonts
+tap 'wix/brew'                      # for applesimutils          
 
 # BREWS / CASKS
 # Apps
@@ -20,64 +19,66 @@ tap 'homebrew/cask-fonts'           # open source fonts
 brew 'mas'                          # automatically install mac apps
 
 # CORE ENV LIBS
-brew 'chezmoi'                      # dotfile managers
+brew 'chezmoi'                      # dotfile managers # TODO: I wonder if this should be installed via other means than brew, since it's confusing stuff during chezmoi init script
 brew 'git'                          # version control
 brew 'macvim'                       # vim flavor
-cask 'alacritty'                    # terminal emulator
 brew 'tmux'                         # terminal multiplexor
 brew 'zsh'                          # shell
 brew 'zsh-completions'              # adds auto complete for zsh
 brew 'zsh-autosuggestions'          # adds auto suggestions for zsh
 brew 'fzf'                          # commandline fuzzy finder
 brew 'starship'                     # cross shell prompt
-brew 'exa'                          # command line sugar (used for `lsa` alias)
+
+# FONTS
 cask "font-fira-code"
 cask "font-hack-nerd-font"
 
 ## DEV TOOL
 brew 'yarn'                         # packager (nvm installed with curl)
 brew 'gh'                           # GitHub CLI
-brew 'yq'                           # yaml functions
 brew 'watchman'                     # detects file changes 
-brew 'awscli'
+brew 'awscli'                       # AWS CLI
+brew 'yq'                           # yaml functions
 brew 'jq'                           # like jquery for cli
 
 # CORE APPS
-cask "brave-browser"
-cask "1password"
 cask "1password-cli" # needs sudo?
-cask "logseq"
+cask "brave-browser"
 cask "visual-studio-code"
+cask "logseq"
 
 # MISC APPS
 cask "vlc"
 cask "spotify"
-cask "slack"
 cask "discord"
 cask "figma"
+
+# For apps that are installed automatically by work MDM
+{{ if not	.is_work_computer }}
+
 cask "firefox"
+cask "slack" 
 cask "google-chrome"
 
+{{ end }}
+
+
 # MOBILE DEV
-mas 'Xcode', id: 497_799_835        # XCode for iOS support
+mas  'Xcode', id: 497799835         # XCode for iOS support
 cask "android-studio"
 cask "android-platform-tools"       # Android SDK platform-tools
 brew 'ideviceinstaller'
 brew 'ios-webkit-debug-proxy'
 brew 'libimobiledevice'
 brew 'lyft/formulae/set-simulator-location'
-brew 'wix/brew/applesimutils'
 brew 'carthage'
 brew 'cocoapods'
 
 # MISC DEV TOOLS
-cask "postico"
-cask "postman"
+cask 'docker'                       # containers
 brew 'gnupg'                        # PGP
 brew 'cmake'                        # build executor
-brew 'circleci'                     # checks circleci config
-cask 'docker'                       # containers
-brew 'youtube-dl'
+brew 'yt-dlp'
 brew 'ffmpeg'
 brew 'poppler'
 brew 'graphviz'
@@ -86,14 +87,17 @@ brew 'imagemagick'
 brew 'tesseract'
 brew 'tesseract-lang'
 
-# TODO: Condition w/ templat vars
-# WORK DEPS
-brew 'rbenv'
-brew 'ruby'
+
+{{ if .is_work_computer }}
+
+# WORK.TERRAFORM 
 brew 'terraform'
 brew 'tfenv'
 brew 'tflint'
+# WORK.MISC
+brew 'circleci'     
 
+{{ end }}
 
 ################################################################################
 ################################################################################
@@ -102,9 +106,19 @@ brew 'tflint'
 # brew "noahgorstein/tap/jqp"
 # brew 'facebook/fb/idb-companion'
 # cask 'adoptopenjdk8'
+# brew 'wix/brew/applesimutils'
 
 # brew 'memcached', restart_service: true
 # brew 'postgresql@14', restart_service: true
 # brew 'redis', restart_service: true
+# brew 'rbenv'
+# brew 'ruby'
 
 # cask "private-internet-access"
+
+# TODO: review this
+# Installing exa has failed!
+# brew 'exa'                          # command line sugar (used for `lsa` alias)
+
+# TODO: This isn't respected by work security policy for some reason
+# cask 'alacritty'                    # terminal emulator
