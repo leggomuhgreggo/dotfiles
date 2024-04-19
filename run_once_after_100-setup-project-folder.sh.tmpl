@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+mkdir -p ~/projects/work
+mkdir -p ~/projects/explorations
+mkdir -p ~/projects/personal
+
+
+
+{{ if .is_work_computer }}
+
+cd ~/projects/work
+git clone git@github.com:sweetgreen/sg-monorepo.git
+
+{{ end }}
