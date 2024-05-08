@@ -31,6 +31,62 @@ alias gc='git commit -m'
 alias gb="git for-each-ref --sort=-committerdate refs/heads/ --format='%(authordate:short) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gbr="git for-each-ref --sort=-committerdate refs/heads/ refs/remotes --format='%(authordate:short) %(authorname) %(color:red)%(objectname:short) %(color:yellow)%(refname:short)%(color:reset) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
+gbup() {
+    git checkout -b "chore/upgrade-$1-$(date +%Y-%m-%d)"
+}
+
+
+gbchop() {
+    # Capture the name of the current branch
+    local current_branch=$(git branch --show-current)
+    # Check if the current branch is 'main'
+    if [ "$current_branch" = "main" ]; then
+        echo "Already on main branch, cannot delete."
+        return 1 # Exit the function with an error
+    fi
+
+    # Checkout to the main branch
+    git checkout main && \
+    # Delete the former current branch
+    git branch -d "$current_branch"
+}
+
+# ──────────────────────────────────────────────────────────────────────────────
+
+
+count_commits_since() {
+    local commit_hash=$1
+    # Count the number of commits from the given commit to HEAD
+    local count=$(git rev-list --count --first-parent $commit_hash..HEAD)
+    echo "Merge commits: $count"
+}
+count_affected_apps() {
+    local commit_hash=$1
+    # List all changed files from given commit to HEAD, filter paths in "apps/*", extract the folder name, and count unique entries
+    local count=$(git diff --name-only --first-parent $commit_hash..HEAD -- apps/ | cut -d'/' -f2 | sort -u | wc -l)
+    echo "Affected projects in 'apps/*': $count"
+}
+count_affected_libs() {
+    local commit_hash=$1
+    # List all changed files from given commit to HEAD, filter paths in "libs/*", extract the folder name, and count unique entries
+    local count=$(git diff --name-only --first-parent $commit_hash..HEAD -- libs/ | cut -d'/' -f2 | sort -u | wc -l)
+    echo "Affected project folders in 'libs/*': $count"
+}
+count_lockfile_changes() {
+    local commit_hash=$1
+    local count=$(git rev-list --count --first-parent $commit_hash..HEAD -- yarn.lock)
+    echo "Updates to node dependencies: $count"
+}
+
+report_since() {
+    local commit_hash=$1
+    count_commits_since $commit_hash
+    count_affected_apps $commit_hash
+    count_affected_libs $commit_hash
+    count_lockfile_changes $commit_hash
+}
+
+
 # 1Password Config/Aliases
 alias oplogin='eval $(op signin my)'
 alias oporder='op get totp "AWS - sweetgreen-order"'
