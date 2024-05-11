@@ -12,7 +12,11 @@ if [[ $? != 0 ]]; then
 
   # ———————————————————————————————
 
+  echo "installing gh-tidy extension"
   gh extension install HaywardMorihara/gh-tidy
+
+  echo "installing cargo (rust)"
+  curl https://sh.rustup.rs -sSf | sh
 
 fi
 

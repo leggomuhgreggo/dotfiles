@@ -53,39 +53,60 @@ gbchop() {
 
 # ──────────────────────────────────────────────────────────────────────────────
 
-
+# Functions modified to return values instead of printing directly
 count_commits_since() {
     local commit_hash=$1
-    # Count the number of commits from the given commit to HEAD
-    local count=$(git rev-list --count --first-parent $commit_hash..HEAD)
-    echo "Merge commits: $count"
+    git rev-list --count --first-parent $commit_hash..HEAD
 }
+
 count_affected_apps() {
     local commit_hash=$1
-    # List all changed files from given commit to HEAD, filter paths in "apps/*", extract the folder name, and count unique entries
-    local count=$(git diff --name-only --first-parent $commit_hash..HEAD -- apps/ | cut -d'/' -f2 | sort -u | wc -l)
-    echo "Affected projects in 'apps/*': $count"
+    git diff --name-only --first-parent $commit_hash..HEAD -- apps/ | cut -d'/' -f2 | sort -u | wc -l
 }
+
 count_affected_libs() {
     local commit_hash=$1
-    # List all changed files from given commit to HEAD, filter paths in "libs/*", extract the folder name, and count unique entries
-    local count=$(git diff --name-only --first-parent $commit_hash..HEAD -- libs/ | cut -d'/' -f2 | sort -u | wc -l)
-    echo "Affected project folders in 'libs/*': $count"
+    git diff --name-only --first-parent $commit_hash..HEAD -- libs/ | cut -d'/' -f2 | sort -u | wc -l
 }
+
 count_lockfile_changes() {
     local commit_hash=$1
-    local count=$(git rev-list --count --first-parent $commit_hash..HEAD -- yarn.lock)
-    echo "Updates to node dependencies: $count"
+    git rev-list --count --first-parent $commit_hash..HEAD -- yarn.lock
 }
 
+# Main function to format and display the report
 report_since() {
     local commit_hash=$1
-    count_commits_since $commit_hash
-    count_affected_apps $commit_hash
-    count_affected_libs $commit_hash
-    count_lockfile_changes $commit_hash
-}
+    local keys=("Merge commits" "Affected projects in 'apps'" "Affected project folders in 'libs'" "Updates to npm dependencies")
+    local values=(
+        $(count_commits_since $commit_hash)
+        $(count_affected_apps $commit_hash)
+        $(count_affected_libs $commit_hash)
+        $(count_lockfile_changes $commit_hash)
+    )
 
+    # Use associative arrays with zip operator
+    typeset -A report=("${(@)keys:^values}")
+
+    # Calculate max length of keys for alignment
+    local max_length=0
+    for key in "${keys[@]}"; do
+        (( ${#key} > max_length )) && max_length=${#key}
+    done
+
+    # ──────────────────────────────────────────────────────────────────────
+    
+    echo  # This will add a line break at the end of the report output
+    echo -e "\e[1;37;44mMonorepo Changes Since:\e[0m" "\e[1;4m$commit_hash\e[0m"
+
+    # Print formatted output with dots
+    for key value in "${(@kv)report}"; do
+        local dots=$(( max_length + 30 - ${#key} - ${#value} ))  # adjust 30 to more if more space is needed
+        printf "* %s:%s%s\n" "$key" "$(printf '.%.0s' {1..$dots})" "$value"
+    done
+
+    echo  # This will add a line break at the end of the report output
+}
 
 # 1Password Config/Aliases
 alias oplogin='eval $(op signin my)'
