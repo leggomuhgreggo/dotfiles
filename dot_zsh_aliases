@@ -1,3 +1,5 @@
+alias python=python3
+
 
 # Shortcuts
 alias dots="code $(chezmoi source-path)" 
