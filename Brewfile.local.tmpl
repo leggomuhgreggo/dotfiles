@@ -11,7 +11,6 @@
 #
 tap 'homebrew/bundle'               # Brewfile support
 tap 'homebrew/services'             # manage background services
-tap 'homebrew/cask-fonts'           # open source fonts
 tap 'wix/brew'                      # for applesimutils          
 
 # BREWS / CASKS
@@ -38,7 +37,7 @@ cask "font-fira-code"
 cask "font-hack-nerd-font"
 
 ## DEV TOOL
-brew 'yarn'                         # packager (nvm installed with curl)
+brew 'asdf'                         # version manager for nodejs, python, elixir, erlang, ruby, yarn
 brew 'gh'                           # GitHub CLI
 brew 'watchman'                     # detects file changes 
 brew 'awscli'                       # AWS CLI
@@ -95,10 +94,11 @@ brew 'tesseract-lang'
 
 {{ if .is_work_computer }}
 
-# WORK.TERRAFORM 
-brew 'terraform'
-brew 'tfenv'
-brew 'tflint'
+# # WORK.TERRAFORM 
+# brew 'terraform'
+# brew 'tfenv'
+# brew 'tflint'
+
 # WORK.MISC
 brew 'circleci'     
 brew 'caddy'
