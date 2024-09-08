@@ -1,0 +1,44 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+
+################################################################################
+
+# Check if `duti` is installed
+if ! command -v duti &> /dev/null
+then
+    echo "duti could not be found"
+    echo "Suggestion: `brew install duti`"
+    exit
+fi
+
+################################################################################
+
+duti -s com.microsoft.VSCode c all        # C files
+duti -s com.microsoft.VSCode cpp all      # C++ files
+duti -s com.microsoft.VSCode h all        # Header files
+duti -s com.microsoft.VSCode m all        # Objective-C files
+duti -s com.microsoft.VSCode mm all       # Objective-C++ files
+duti -s com.microsoft.VSCode swift all    # Swift files
+duti -s com.microsoft.VSCode js all       # JavaScript files
+duti -s com.microsoft.VSCode jsx all      # JSX files
+duti -s com.microsoft.VSCode ts all       # TypeScript files
+duti -s com.microsoft.VSCode tsx all      # TSX files
+duti -s com.microsoft.VSCode py all       # Python files
+duti -s com.microsoft.VSCode rb all       # Ruby files
+duti -s com.microsoft.VSCode java all     # Java files
+duti -s com.microsoft.VSCode php all      # PHP files
+duti -s com.microsoft.VSCode go all       # Go files
+duti -s com.microsoft.VSCode sh all       # Shell script files
+duti -s com.microsoft.VSCode json all     # JSON files
+duti -s com.microsoft.VSCode css all      # CSS files
+duti -s com.microsoft.VSCode html all     # HTML files
+duti -s com.microsoft.VSCode xml all      # XML files
+
+################################################################################
+
+# Restart Finder
+killall Finder
+
+################################################################################
+
+# EOF
+{{ end -}}
