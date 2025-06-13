@@ -1,4 +1,6 @@
-{{- if (eq .chezmoi.os "darwin") -}}
+#!/usr/bin/env bash
+
+{{ if eq .chezmoi.os "darwin" }}
 
 ################################################################################
 
@@ -9,8 +11,6 @@ then
     echo "Suggestion: `brew install duti`"
     exit
 fi
-
-################################################################################
 
 duti -s com.microsoft.VSCode c all        # C files
 duti -s com.microsoft.VSCode cpp all      # C++ files
@@ -30,10 +30,7 @@ duti -s com.microsoft.VSCode go all       # Go files
 duti -s com.microsoft.VSCode sh all       # Shell script files
 duti -s com.microsoft.VSCode json all     # JSON files
 duti -s com.microsoft.VSCode css all      # CSS files
-duti -s com.microsoft.VSCode html all     # HTML files
 duti -s com.microsoft.VSCode xml all      # XML files
-
-################################################################################
 
 # Restart Finder
 killall Finder
@@ -41,4 +38,4 @@ killall Finder
 ################################################################################
 
 # EOF
-{{ end -}}
+{{ end }}
