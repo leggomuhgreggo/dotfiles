@@ -1,0 +1,38 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+## mise plugin add nodejs
+## mise install nodejs latest
+## mise global nodejs latest
+
+## mise plugin add yarn
+## mise install yarn latest
+## mise global yarn latest
+
+
+# @REVIEW: This needed?
+# corepack enable
+## # mise reshim nodejs
+
+
+## mise plugin add ruby
+## mise install ruby latest
+## mise global ruby latest
+
+
+## mise plugin-add python
+## mise install python latest
+## mise global python latest
+
+
+## mise plugin add elixir
+## mise install elixir latest
+## mise global elixir latest
+
+## mise plugin add erlang
+# To work with VSCode plugins: 
+## KERL_BUILD_DOCS=yes mise install erlang latest
+## mise global erlang latest
+
+# EOF
+{{ end -}}

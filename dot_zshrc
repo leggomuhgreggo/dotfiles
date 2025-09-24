@@ -6,7 +6,6 @@ DEFAULT_USER=`whoami`
 ZSH_THEME="agnoster"
 plugins=(
   zsh-autosuggestions
-  asdf
   git
   github
   pip
@@ -39,7 +38,8 @@ eval "$(starship init zsh)"
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# Mise
+eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
