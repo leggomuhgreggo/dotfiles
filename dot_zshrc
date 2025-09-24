@@ -20,12 +20,12 @@ if [ -f ~/.zsh_aliases ]; then . ~/.zsh_aliases; fi
 # ──────────────────────────────────────────────────────────────────────────────
 
 # zsh-completions init
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 
 # ──────────────────────────────────────────────────────────────────────────────
 
-eval "$(op completion zsh)"; compdef _op op
+# eval "$(op completion zsh)"; compdef _op op
 
 # ──────────────────────────────────────────────────────────────────────────────
 
