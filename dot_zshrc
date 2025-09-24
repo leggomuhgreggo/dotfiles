@@ -7,9 +7,6 @@ ZSH_THEME="agnoster"
 plugins=(
   zsh-autosuggestions
   git
-  github
-  pip
-  python
   brew
   tmux
 )
