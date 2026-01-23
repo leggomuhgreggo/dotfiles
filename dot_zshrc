@@ -47,3 +47,6 @@ esac
 # pnpm end
 
 export HISTTIMEFORMAT="%F %T "
+
+# For claude
+export PATH="$HOME/.local/bin:$PATH"
