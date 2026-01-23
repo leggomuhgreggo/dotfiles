@@ -5,6 +5,9 @@
 [core]
 	excludesfile = /Users/gregorywestneat/.gitignore_global
 	editor = code --wait
+	untrackedCache = true
+	commitGraph = true
+	multiPackIndex = true
 [diff]
   tool = vscode
 [difftool "vscode"]
@@ -20,22 +23,7 @@
 
 [alias]
 	fetch-checkout = !sh -c 'git fetch $1 $2 && git checkout $2' -
-	pushf = push --force-with-lease
 	append = commit --amend --no-edit
-	unstage = reset HEAD --
-	prunelocal = !sh -c 'npx git-removed-branches --prune'
-	recent = !git for-each-ref refs/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset)|%(color:bold green)%(committerdate:relative)%(color:reset)|%(contents:lines=1)|%(color:magenta)%(authorname)%(color:reset)' --count 100 --sort=-committerdate | column -ts '|' | less -SXRF
-	fetch-pulls = !git -c remote.origin.fetch="+refs/pull/*/head:refs/remotes/origin/pull/*" fetch
-	freebase = "!f() { \
-    TOPIC="$(git branch | grep '\\*' | cut -d ' ' -f2)"; \
-    NEWBASE="${1:-main}"; \
-    PREVSHA1="$(git rev-parse HEAD)"; \
-    echo "Freebaseing $TOPIC onto $NEWBASE, previous sha1 was $PREVSHA1"; \
-    echo "---"; \
-    git reset --hard "$NEWBASE"; \
-    git merge --squash "$PREVSHA1"; \
-    git commit; \
-  }; f"
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -49,6 +37,11 @@
 
 [fetch]
 	prune = true
+	negotiationAlgorithm = skipping
+	writeCommitGraph = true
+
+[gc]
+	writeCommitGraph = true
 
 [init]
 	defaultBranch = main
